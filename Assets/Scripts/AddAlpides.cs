@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Add the ALPIDEs around a collsion point so they get hit by particles.
 /// </summary>
-public class AddAlpides : MonoBehaviour
+public class AddAlpides : AddAlpidePixel
 {
 	[SerializeField]
 	private GameObject Alpide;
@@ -25,13 +25,13 @@ public class AddAlpides : MonoBehaviour
 	void Start()
 	{
 		positionOfCenterOfCollider = new Vector3(0, 0, 0);
-		SpawnAlpide();
+		Spawn();
 	}
 
 	/// <summary>
 	/// Spawn ALPIDEs around the center of the collision point.
 	/// </summary>
-	private void SpawnAlpide()
+	public override void Spawn()
 	{
 		for (int alpideNumber = 0; alpideNumber < _numberOfAlpidesInLayer; alpideNumber++)
 		{
