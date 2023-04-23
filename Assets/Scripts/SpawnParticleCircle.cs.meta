@@ -4,7 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - _particle: {fileID: 3874145653424158560, guid: 511342485aa7bec4bafdd0a3b3e65219, type: 3}
+  - _particle: {instanceID: 0}
+  - _particleSpawner: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
