@@ -24,7 +24,7 @@ public class AddAlpides : MonoBehaviour, IAddAlpidePixels
 
 	void Start()
 	{
-		positionOfCenterOfCollider = new Vector3(0, 0, 0);
+		positionOfCenterOfCollider = Vector3.zero;
 		Spawn();
 	}
 

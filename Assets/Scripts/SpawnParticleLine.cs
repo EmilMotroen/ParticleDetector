@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// Spawn particles from a gameobject. 
-/// Used by particles spawned in a line on tracking simulation.
+/// Used by particles spawned in a line for tracking simulation.
 /// </summary>
 public class SpawnParticleLine : MonoBehaviour, ISpawnParticle
 {
@@ -24,6 +22,7 @@ public class SpawnParticleLine : MonoBehaviour, ISpawnParticle
 
 	public void Spawn()
 	{
-		Debug.Log(">>>>");
+		var particle = Instantiate(_particle);
+		particle.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, ParticleVelocity);
 	}
 }
