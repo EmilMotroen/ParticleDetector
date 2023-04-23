@@ -18,16 +18,15 @@ public class AddTrackingPixels : MonoBehaviour, IAddAlpidePixels
 
 	private readonly int _numberOfPixelsX = 10;
     private readonly int _numberOfPixelsY = 5;
+	private float _sizeOfBoxX;
 	private float _sizeOfBoxZ;
-	private float _sizeOfBoxY;
 
 	private Vector3 _positionOfParticleLaunch;
 
 	private void Start()
 	{
-		_sizeOfBoxZ = _pixel.GetComponent<MeshRenderer>().bounds.size.z / 10;  // Planes are 10x10 and not 1x1 by default
-		_sizeOfBoxY = _pixel.GetComponent<MeshRenderer>().bounds.size.y / 10;
-		Debug.Log($"x: {_sizeOfBoxZ}, y: {_sizeOfBoxY}");
+		_sizeOfBoxX = _pixel.GetComponent<MeshRenderer>().bounds.size.x / 10;  // Planes are 10x10 and not 1x1 by default
+		_sizeOfBoxZ = _pixel.GetComponent<MeshRenderer>().bounds.size.z / 10;
 		_positionOfParticleLaunch = Vector3.zero;
 		Spawn();
 	}
@@ -36,14 +35,14 @@ public class AddTrackingPixels : MonoBehaviour, IAddAlpidePixels
     {
 		for (int layer = 0; layer < NumberOfAlpideLayers; layer++)
 		{
-			for (int pixelsZ = 0;  pixelsZ < _numberOfPixelsX; pixelsZ++)
+			for (int pixelsX = 0;  pixelsX < _numberOfPixelsX; pixelsX++)
 			{
-				for (int pixelsY = 0;pixelsY < _numberOfPixelsY; pixelsY++)
+				for (int pixelsZ = 0;pixelsZ < _numberOfPixelsY; pixelsZ++)
 				{
-					var pixelPos = new Vector3(pixelsZ + _sizeOfBoxZ, pixelsY + _sizeOfBoxY, DistanceBetweenAlpideLayers - layer);
+					var pixelPos = new Vector3(pixelsX + _sizeOfBoxX, pixelsZ + _sizeOfBoxZ, DistanceBetweenAlpideLayers - layer);
 					var pixelCopy = Instantiate(_pixel, pixelPos, Quaternion.identity);
-					pixelCopy.transform.Rotate(-90, 0, 0);
-					pixelCopy.name = $"pixel_{pixelsZ}_{pixelsY}_{layer}";
+					pixelCopy.transform.Rotate(90, 0, 0);
+					pixelCopy.name = $"pixel_{pixelsX}_{pixelsZ}_{layer}";
 
 				}
 			}
