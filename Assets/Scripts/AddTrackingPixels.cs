@@ -7,7 +7,7 @@ using UnityEngine;
 /// The tracking is a particle goes through the pixels, then those pixels are saved to a file/database,
 /// then fetched from that file/database and put back on the pixels to add tracking of the particle.
 /// </summary>
-public class AddTrackingPixels : AddAlpidePixel
+public class AddTrackingPixels : MonoBehaviour
 {
     [SerializeField]
     private GameObject _pixel;
@@ -21,7 +21,7 @@ public class AddTrackingPixels : AddAlpidePixel
 		
 	}
 
-    public override void Spawn()
+    public void Spawn()
     {
 
     }

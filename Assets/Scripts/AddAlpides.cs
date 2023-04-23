@@ -5,18 +5,18 @@ using UnityEngine;
 /// <summary>
 /// Add the ALPIDEs around a collsion point so they get hit by particles.
 /// </summary>
-public class AddAlpides : AddAlpidePixel
+public class AddAlpides : MonoBehaviour, IAddAlpidePixels
 {
 	[SerializeField]
 	private GameObject Alpide;
 	
-	private readonly float _distanceBetweenColliderAndAlpide = 5.0f;  // Distance to the closest layer from the center
-	private readonly int _numberOfAlpideLayers = 4;
+	public int NumberOfAlpideLayers {  get { return 2; } }
+	public float DistanceBetweenColliderAndAlpide { get { return 5.0f; } }
+	public float DistanceBetweenAlpideLayers { get { return 0.1f; } set { } }
+
 	private readonly int _numberOfAlpidesInLayer = 30;
 	private readonly int _additionalAlpidesToTheSides = 0;  // Add ALPIDEs to the left and right
 	private readonly float _distanceBetweenAlpidesSides = 1.0f;
-
-	private float _distanceBetweenLayers = 0.1f;
 
 	private Vector3 positionOfCenterOfCollider;
 	private readonly List<(GameObject, Vector3, Quaternion)> _alpidePositions = 
@@ -31,11 +31,11 @@ public class AddAlpides : AddAlpidePixel
 	/// <summary>
 	/// Spawn ALPIDEs around the center of the collision point.
 	/// </summary>
-	public override void Spawn()
+	public void Spawn()
 	{
 		for (int alpideNumber = 0; alpideNumber < _numberOfAlpidesInLayer; alpideNumber++)
 		{
-			Vector3 pos = AlpideCircle(positionOfCenterOfCollider, _distanceBetweenColliderAndAlpide);
+			Vector3 pos = AlpideCircle(positionOfCenterOfCollider, DistanceBetweenColliderAndAlpide);
 			Quaternion rot = Quaternion.FromToRotation(Vector3.forward, positionOfCenterOfCollider - pos);
 			var alpide = Instantiate(Alpide, pos, rot);
 			alpide.name = $"alpide_{alpideNumber}";
@@ -52,21 +52,20 @@ public class AddAlpides : AddAlpidePixel
 	/// </summary>
 	private void AddAdditionalLayers()
 	{
-		for (int layerNumber = 1; layerNumber < _numberOfAlpideLayers; layerNumber++)
+		for (int layerNumber = 1; layerNumber < NumberOfAlpideLayers; layerNumber++)
 		{
-			//_distanceBetweenLayers += _distanceBetweenLayers;
 			foreach (var alpide in _alpidePositions)
 			{
 				var nextLayerAlpide = Instantiate(Alpide);
 				float x = (alpide.Item2.x > 0.0) ?
-					alpide.Item2.x + _distanceBetweenLayers : alpide.Item2.x - _distanceBetweenLayers;
+					alpide.Item2.x + DistanceBetweenAlpideLayers : alpide.Item2.x - DistanceBetweenAlpideLayers;
 				float y = (alpide.Item2.y > 0.0) ?
-					alpide.Item2.y + _distanceBetweenLayers : alpide.Item2.y - _distanceBetweenLayers;
+					alpide.Item2.y + DistanceBetweenAlpideLayers : alpide.Item2.y - DistanceBetweenAlpideLayers;
 				nextLayerAlpide.transform.position = new Vector3(x, y);
 				nextLayerAlpide.transform.LookAt(positionOfCenterOfCollider);
 				nextLayerAlpide.transform.Rotate(90, 0, 0);
 			}
-			_distanceBetweenLayers += _distanceBetweenLayers;
+			DistanceBetweenAlpideLayers += DistanceBetweenAlpideLayers;
 		}
 
 		_alpidePositions.Clear();

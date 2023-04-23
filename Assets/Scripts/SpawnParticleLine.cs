@@ -24,6 +24,6 @@ public class SpawnParticleLine : MonoBehaviour, ISpawnParticle
 
 	public void Spawn()
 	{
-		throw new System.NotImplementedException();
+		Debug.Log(">>>>");
 	}
 }
