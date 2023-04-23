@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IAddAlpidePixels
 {
 	/// <summary>
-	/// Number of layers of ALPIDEs to render.
+	/// Number of layers of ALPIDEs to add to the scene.
 	/// </summary>
 	public abstract int NumberOfAlpideLayers { get; }
 	/// <summary>
