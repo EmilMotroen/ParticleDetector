@@ -9,8 +9,8 @@ public class SpawnParticleCircle : MonoBehaviour, ISpawnParticle
 	[SerializeField]
 	private GameObject _particle;
 
-	public float ParticleLifetime { get { return 10.0f; } }
-	public float ParticleVelocity { get { return 15.0f; } }
+	public float ParticleLifetime { get { return 15.0f; } }
+	public float ParticleVelocity { get { return 25.0f; } }
 
 	private void Update()
 	{

@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 /// <summary>
-/// 
+/// An interface detailing the common features needed by the different particle spawners.
 /// </summary>
 public interface ISpawnParticle
 {
@@ -18,7 +14,9 @@ public interface ISpawnParticle
 	public abstract float ParticleVelocity { get; }
 
 	/// <summary>
-	/// Spawn and destroy new particles.
+	/// Spawn and destroy new particles. 
+	/// TODO: Look into using some kind of timer to destroy particles instead of doing 
+	/// it in this method.
 	/// </summary>
 	public abstract void Spawn();
 }

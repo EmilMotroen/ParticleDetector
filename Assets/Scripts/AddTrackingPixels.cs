@@ -12,7 +12,7 @@ public class AddTrackingPixels : MonoBehaviour, IAddAlpidePixels
     [SerializeField]
     private GameObject _pixel;
 
-	public int NumberOfAlpideLayers { get { return 2; } }
+	public int NumberOfAlpideLayers { get { return 3; } }
 	public float DistanceBetweenColliderAndAlpide { get { return 5.0f; } }
 	public float DistanceBetweenAlpideLayers { get { return 0.1f; } set { } }
 
@@ -21,13 +21,11 @@ public class AddTrackingPixels : MonoBehaviour, IAddAlpidePixels
 	private float _sizeOfBoxX;
 	private float _sizeOfBoxZ;
 
-	private Vector3 _positionOfParticleLaunch;
 
 	private void Start()
 	{
 		_sizeOfBoxX = _pixel.GetComponent<MeshRenderer>().bounds.size.x / 10;  // Planes are 10x10 and not 1x1 by default
 		_sizeOfBoxZ = _pixel.GetComponent<MeshRenderer>().bounds.size.z / 10;
-		_positionOfParticleLaunch = Vector3.zero;
 		Spawn();
 	}
 
@@ -42,7 +40,7 @@ public class AddTrackingPixels : MonoBehaviour, IAddAlpidePixels
 					var pixelPos = new Vector3(pixelsX + _sizeOfBoxX, pixelsZ + _sizeOfBoxZ, DistanceBetweenAlpideLayers - layer);
 					var pixelCopy = Instantiate(_pixel, pixelPos, Quaternion.identity);
 					pixelCopy.transform.Rotate(90, 0, 0);
-					pixelCopy.name = $"pixel_{pixelsX}_{pixelsZ}_{layer}";
+					pixelCopy.name = $"{pixelsX}_{pixelsZ}_{layer}"; 
 
 				}
 			}

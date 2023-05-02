@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4019398542178118938}
   m_Layer: 0
   m_Name: ALPIDE
-  m_TagString: Pixel
+  m_TagString: FullSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
