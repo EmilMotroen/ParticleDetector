@@ -11,9 +11,9 @@ public class AddAlpides : MonoBehaviour, IAddAlpidePixels
 	private GameObject Alpide;
 	
 	public int NumberOfAlpideLayers {  get { return 4; } }
-	public float DistanceBetweenColliderAndAlpide { get { return 5.0f; } }
 	public float DistanceBetweenAlpideLayers { get { return 0.1f; } set { } }
 
+	private float _distanceBetweenColliderAndAlpide = 5.0f;
 	private readonly int _numberOfAlpidesInLayer = 30;
 	private readonly int _additionalAlpidesToTheSides = 0;  // Add ALPIDEs to the left and right
 	private readonly float _distanceBetweenAlpidesSides = 1.0f;
@@ -32,7 +32,7 @@ public class AddAlpides : MonoBehaviour, IAddAlpidePixels
 	{
 		for (int alpideNumber = 0; alpideNumber < _numberOfAlpidesInLayer; alpideNumber++)
 		{
-			Vector3 pos = AlpideCircle(positionOfCenterOfCollider, DistanceBetweenColliderAndAlpide);
+			Vector3 pos = AlpideCircle(positionOfCenterOfCollider, _distanceBetweenColliderAndAlpide);
 			Quaternion rot = Quaternion.FromToRotation(Vector3.forward, positionOfCenterOfCollider - pos);
 			var alpide = Instantiate(Alpide, pos, rot);
 			alpide.name = $"alpide_{alpideNumber}";

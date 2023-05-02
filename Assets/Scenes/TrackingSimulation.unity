@@ -421,6 +421,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: 170, z: 0}
+--- !u!1 &1652030067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1652030069}
+  - component: {fileID: 1652030068}
+  m_Layer: 0
+  m_Name: Pixel Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1652030068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652030067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d271e6ecea119444d968d7efd3e2963e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pixel: {fileID: 5505018038539621308, guid: 354f623e34108ca4886e8c56481304ac, type: 3}
+--- !u!4 &1652030069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652030067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1711600366
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,8 +542,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711600366}
-  m_LocalRotation: {x: -0.00012134109, y: 0.999832, z: -0.016497873, w: -0.007994354}
-  m_LocalPosition: {x: 4.1036625, y: 1.8354225, z: 10.4028015}
+  m_LocalRotation: {x: 0.605557, y: -0.0073030316, z: 0.0056114634, w: 0.79574865}
+  m_LocalPosition: {x: 3.7163904, y: 11.950242, z: -2.8260825}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

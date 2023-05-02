@@ -13,7 +13,6 @@ public class AddTrackingPixels : MonoBehaviour, IAddAlpidePixels
     private GameObject _pixel;
 
 	public int NumberOfAlpideLayers { get { return 3; } }
-	public float DistanceBetweenColliderAndAlpide { get { return 5.0f; } }
 	public float DistanceBetweenAlpideLayers { get { return 0.1f; } set { } }
 
 	private readonly int _numberOfPixelsX = 10;
@@ -37,9 +36,8 @@ public class AddTrackingPixels : MonoBehaviour, IAddAlpidePixels
 			{
 				for (int pixelsZ = 0;pixelsZ < _numberOfPixelsY; pixelsZ++)
 				{
-					var pixelPos = new Vector3(pixelsX + _sizeOfBoxX, pixelsZ + _sizeOfBoxZ, DistanceBetweenAlpideLayers - layer);
+					var pixelPos = new Vector3(pixelsX + _sizeOfBoxX, DistanceBetweenAlpideLayers - layer, pixelsZ + _sizeOfBoxZ);
 					var pixelCopy = Instantiate(_pixel, pixelPos, Quaternion.identity);
-					pixelCopy.transform.Rotate(90, 0, 0);
 					pixelCopy.name = $"{pixelsX}_{pixelsZ}_{layer}"; 
 
 				}

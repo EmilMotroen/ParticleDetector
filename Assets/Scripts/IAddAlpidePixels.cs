@@ -12,10 +12,6 @@ public interface IAddAlpidePixels
 	/// </summary>
 	public abstract int NumberOfAlpideLayers { get; }
 	/// <summary>
-	/// The distance from the closest ALPIDE to the point the particle is instantiated from.
-	/// </summary>
-	public abstract float DistanceBetweenColliderAndAlpide { get; }
-	/// <summary>
 	/// Distance between the layers of the ALPIDEs.
 	/// </summary>
     public abstract float DistanceBetweenAlpideLayers { get; set; }
