@@ -4,13 +4,13 @@ using UnityEngine;
 /// Spawn particles from a gameobject that is hidden inside the collider cylinder. 
 /// Used by particles spawned in a circle on the USNExpo simulation.
 /// </summary>
-public class SpawnParticleCircle : MonoBehaviour, ISpawnParticle
+public class SpawnParticle : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject _particle;
 
-	public float ParticleLifetime { get { return 10.0f; } }
-	public float ParticleVelocity { get { return 15.0f; } }
+	private readonly float _lifetime = 30.0f;
+	private readonly float _velocity = 15.0f;
 
 	private void Update()
 	{
@@ -24,9 +24,9 @@ public class SpawnParticleCircle : MonoBehaviour, ISpawnParticle
     {
 		var particle = Instantiate(_particle, transform.position, Quaternion.identity);
 		particle.GetComponent<Rigidbody>().velocity = new Vector3(
-            Random.Range(-ParticleVelocity, ParticleVelocity),
-			Random.Range(-ParticleVelocity, ParticleVelocity),
-			Random.Range(-ParticleVelocity, ParticleVelocity));
-        Destroy(particle, ParticleLifetime);  // Destroy particles after a certain time to prevent too many existing
+            Random.Range(-_velocity, _velocity),
+			Random.Range(-_velocity, _velocity),
+			Random.Range(-_velocity, _velocity));
+        Destroy(particle, _lifetime);  // Destroy particles after a certain time to prevent too many existing
 	}
 }
