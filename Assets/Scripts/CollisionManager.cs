@@ -8,11 +8,7 @@ public class CollisionManager : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Pixel"))  // Used for the tracking sim
-        {
-            WriteReadTrackingHits.WriteHitsToFile(other.name);
-        } 
-        else if (other.CompareTag("FullSensor"))  // Used for the USNExpo sim
+        if (other.CompareTag("FullSensor"))  // Used for the USNExpo sim
         {
             Debug.Log($"Hit on sensor {other.name}");
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Add the ALPIDEs around a collsion point so they get hit by particles.
 /// </summary>
-public class AddAlpides : MonoBehaviour, IAddAlpidePixels
+public class AddAlpides : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject Alpide;
@@ -65,7 +65,6 @@ public class AddAlpides : MonoBehaviour, IAddAlpidePixels
 				nextLayerAlpide.transform.Rotate(90, 0, 0);
 			}
 			distance += DistanceBetweenAlpideLayers;
-			Debug.Log($"{distance}");
 		}
 
 		_alpidePositions.Clear();
