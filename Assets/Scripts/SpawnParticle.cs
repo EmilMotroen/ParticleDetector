@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Spawn particles from a gameobject that is hidden inside the collider cylinder. 
@@ -8,6 +9,8 @@ public class SpawnParticle : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject _particle;
+	[SerializeField]
+	private Text _collisionText;
 
 	[SerializeField]
 	private float _lifetime = 10.0f;
@@ -29,8 +32,10 @@ public class SpawnParticle : MonoBehaviour
 	private void CollisionTimer()
 	{
 		_timeToCollision -= Time.deltaTime;
+		_collisionText.text = "Collision in: " + _timeToCollision.ToString("#.###");
 		if (_timeToCollision < 0)
 		{
+			_collisionText.text = "Colliding!"; 
 			Spawn();
 			_collisionDuration -= Time.deltaTime;
 			if (_collisionDuration < 0)
@@ -48,7 +53,6 @@ public class SpawnParticle : MonoBehaviour
             Random.Range(-_velocity, _velocity),
 			Random.Range(-_velocity, _velocity),
 			Random.Range(-_velocity, _velocity));
-		particle.GetComponent<Rigidbody>().AddForce(transform.up * Random.Range(-10, 10));
         Destroy(particle, _lifetime);  // Destroy particles after a certain time to prevent too many existing
 	}
 }
