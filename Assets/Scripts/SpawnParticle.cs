@@ -16,7 +16,7 @@ public class SpawnParticle : MonoBehaviour
 	[SerializeField]
 	private float _timeToCollision = 20.0f;
 	[SerializeField]
-	private float _collisionDuration = 3.0f;
+	private float _collisionDuration = 2.5f;
 
 	private void Update()
 	{
@@ -36,18 +36,19 @@ public class SpawnParticle : MonoBehaviour
 			if (_collisionDuration < 0)
 			{
 				_timeToCollision = 20.0f;
-				_collisionDuration = 3.0f;
+				_collisionDuration = 2.5f;
 			}
 		}
 	}
 
 	public void Spawn()
     {
-		var particle = Instantiate(_particle, transform.position, Quaternion.identity);
+		var particle = Instantiate(_particle, transform.position, Random.rotation);
 		particle.GetComponent<Rigidbody>().velocity = new Vector3(
             Random.Range(-_velocity, _velocity),
 			Random.Range(-_velocity, _velocity),
 			Random.Range(-_velocity, _velocity));
+		particle.GetComponent<Rigidbody>().AddForce(transform.up * Random.Range(-10, 10));
         Destroy(particle, _lifetime);  // Destroy particles after a certain time to prevent too many existing
 	}
 }
