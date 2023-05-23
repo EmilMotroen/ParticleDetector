@@ -25,19 +25,22 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        // Move camera forward, backward, left and right
-        transform.position += _speed * Input.GetAxis("Vertical") * Time.deltaTime * transform.forward;
-		transform.position += _speed * Input.GetAxis("Horizontal") * Time.deltaTime * transform.right;
-
-        // Rotate camera
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-        transform.eulerAngles += new Vector3(-mouseY * _sensitivity, mouseX * _sensitivity, 0);
-
-        // Reset camera position and rotation with the 'R' key
-        if (Input.GetKeyDown(KeyCode.R))
+        if (!PauseMenu.Paused)
         {
-			transform.SetPositionAndRotation(_initialPos, _initialRot);
+			// Move camera forward, backward, left and right
+			transform.position += _speed * Input.GetAxis("Vertical") * Time.deltaTime * transform.forward;
+			transform.position += _speed * Input.GetAxis("Horizontal") * Time.deltaTime * transform.right;
+
+			// Rotate camera
+			float mouseX = Input.GetAxis("Mouse X");
+			float mouseY = Input.GetAxis("Mouse Y");
+			transform.eulerAngles += new Vector3(-mouseY * _sensitivity, mouseX * _sensitivity, 0);
+
+			// Reset camera position and rotation with the 'R' key
+			if (Input.GetKeyDown(KeyCode.R))
+			{
+				transform.SetPositionAndRotation(_initialPos, _initialRot);
+			}
 		}
 	}
 }
