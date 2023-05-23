@@ -10,12 +10,12 @@ public class AddAlpides : MonoBehaviour
 	[SerializeField]
 	private GameObject Alpide;
 	
-	public int NumberOfAlpideLayers {  get { return 4; } }
-	public float DistanceBetweenAlpideLayers { get { return 0.1f; } set { } }
+	private readonly int _numberOfAlpideLayers = 4;
+	private float _distanceBetweenAlpideLayers = 0.1f;
 
 	private float _distanceBetweenColliderAndAlpide = 5.0f;
 	private readonly int _numberOfAlpidesInLayer = 30;
-	private readonly int _additionalAlpidesToTheSides = 0;  // Add ALPIDEs to the left and right
+	private readonly int _additionalAlpidesToTheSides = 1;  // Add ALPIDEs to the left and right
 	private readonly float _distanceBetweenAlpidesSides = 1.0f;
 
 	private Vector3 positionOfCenterOfCollider;
@@ -50,8 +50,8 @@ public class AddAlpides : MonoBehaviour
 	/// </summary>
 	private void AddAdditionalLayers()
 	{
-		float distance = DistanceBetweenAlpideLayers;
-		for (int layerNumber = 1; layerNumber < NumberOfAlpideLayers; layerNumber++)
+		float distance = _distanceBetweenAlpideLayers;
+		for (int layerNumber = 1; layerNumber < _numberOfAlpideLayers; layerNumber++)
 		{
 			foreach (var alpide in _alpidePositions)
 			{
@@ -64,7 +64,15 @@ public class AddAlpides : MonoBehaviour
 				nextLayerAlpide.transform.LookAt(positionOfCenterOfCollider);
 				nextLayerAlpide.transform.Rotate(90, 0, 0);
 			}
-			distance += DistanceBetweenAlpideLayers;
+			distance += _distanceBetweenAlpideLayers;
+		}
+
+		foreach (var alpide in _alpidePositions)
+		{
+			var nextAlpide = Instantiate(Alpide);
+			nextAlpide.transform.position = alpide.Item2;
+			nextAlpide.transform.LookAt(positionOfCenterOfCollider);
+			nextAlpide.transform.Rotate(90, 0, 0);
 		}
 
 		_alpidePositions.Clear();
