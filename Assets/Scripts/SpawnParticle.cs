@@ -10,19 +10,38 @@ public class SpawnParticle : MonoBehaviour
 	private GameObject _particle;
 
 	[SerializeField]
-	private float _lifetime = 30.0f;
+	private float _lifetime = 10.0f;
 	[SerializeField]
-	private float _velocity = 15.0f;
+	private float _velocity = 12.0f;
+	[SerializeField]
+	private float _timeToCollision = 20.0f;
+	[SerializeField]
+	private float _collisionDuration = 3.0f;
 
 	private void Update()
 	{
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Spawn();
+		CollisionTimer();
+	}
+
+	/// <summary>
+	/// Counts down to the collision, then spends a couple seconds shooting out particles
+	/// </summary>
+	private void CollisionTimer()
+	{
+		_timeToCollision -= Time.deltaTime;
+		if (_timeToCollision < 0)
+		{
+			Spawn();
+			_collisionDuration -= Time.deltaTime;
+			if (_collisionDuration < 0)
+			{
+				_timeToCollision = 20.0f;
+				_collisionDuration = 3.0f;
+			}
 		}
 	}
 
-    public void Spawn()
+	public void Spawn()
     {
 		var particle = Instantiate(_particle, transform.position, Quaternion.identity);
 		particle.GetComponent<Rigidbody>().velocity = new Vector3(
