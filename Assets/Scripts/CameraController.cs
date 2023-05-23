@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float _speed = 5.0f;  // Speed of the camera
     [SerializeField]
-    private float _sensitivity = 5.0f;  // Sensitivity of the camera
+    private float _sensitivity = 3.5f;  // Sensitivity of the camera
 
     private void Start()
     {

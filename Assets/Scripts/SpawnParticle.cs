@@ -9,8 +9,10 @@ public class SpawnParticle : MonoBehaviour
 	[SerializeField]
 	private GameObject _particle;
 
-	private readonly float _lifetime = 30.0f;
-	private readonly float _velocity = 15.0f;
+	[SerializeField]
+	private float _lifetime = 30.0f;
+	[SerializeField]
+	private float _velocity = 15.0f;
 
 	private void Update()
 	{
