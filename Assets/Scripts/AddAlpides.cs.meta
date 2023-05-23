@@ -3,7 +3,8 @@ guid: af1a148ac7efdae4ba9913b061a83533
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Alpide: {fileID: 919132149155446097, guid: e73b42ab3b7fe594da8aa5ee2bb05a15, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
