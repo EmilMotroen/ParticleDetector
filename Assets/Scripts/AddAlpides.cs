@@ -23,7 +23,6 @@ public class AddAlpides : MonoBehaviour
 	private void AddAdditionalAlpides()
 	{
 		center = _alpide.transform.position;
-		Debug.Log($"Center: {center}");
 		for (int i = 0; i < _numberOfAlpidesToTheSide; i++)
 		{
 			float distance = _distanceBetweenAlpides;
