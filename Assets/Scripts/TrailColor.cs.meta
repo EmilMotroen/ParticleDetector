@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: af1a148ac7efdae4ba9913b061a83533
+guid: 393fd3a358385574e929f862baec97f0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - _alpide: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
