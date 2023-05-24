@@ -1,4 +1,3 @@
-//using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +15,7 @@ public class SpawnParticle : MonoBehaviour
 	private Text _collisionEnergyText;
 	[SerializeField]
 	private Text _dateText;
+
 
 	[SerializeField]
 	private float _lifetime = 10.0f;
