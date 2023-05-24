@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] 
+    private GameObject _pauseMenu;
 
     public static bool Paused;
 
@@ -21,6 +22,9 @@ public class PauseMenu : MonoBehaviour
         }
 	}
 
+    /// <summary>
+    /// Pauses the simulation.
+    /// </summary>
 	private void Pause()
     {
         Paused = true;
@@ -28,6 +32,9 @@ public class PauseMenu : MonoBehaviour
 		_pauseMenu.SetActive(true);
 	}
 
+    /// <summary>
+    /// Resumes if paused.
+    /// </summary>
     public void ResumeButton()
     {
         Paused = false;
@@ -35,6 +42,9 @@ public class PauseMenu : MonoBehaviour
         _pauseMenu.SetActive(false);
     }
 
+    /// <summary>
+    /// Quit the simulation.
+    /// </summary>
     public void QuitGame()
     {
         Application.Quit();
