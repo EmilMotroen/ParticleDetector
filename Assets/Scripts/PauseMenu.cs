@@ -33,6 +33,7 @@ public class PauseMenu : MonoBehaviour
         Paused = true;
         Time.timeScale = 0f;
 		_pauseMenu.SetActive(true);
+        Cursor.visible = true;
 	}
 
     /// <summary>
@@ -43,6 +44,7 @@ public class PauseMenu : MonoBehaviour
         Paused = false;
         Time.timeScale = 1.0f;
         _pauseMenu.SetActive(false);
+        Cursor.visible = false;
     }
 
     /// <summary>
