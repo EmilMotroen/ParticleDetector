@@ -5,11 +5,10 @@ using UnityEngine;
 /// <summary>
 /// Handle the trails colors
 /// </summary>
-public enum TrailColor
+public class TrailColor
 {
-    Red,
-    Green,
-    Blue,
-    Yellow,
-    Magenta
+    public Dictionary<string, string> TrailColors = new Dictionary<string, string>()
+    {
+
+    };
 }

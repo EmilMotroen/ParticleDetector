@@ -7,7 +7,10 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] 
     private GameObject _pauseMenu;
 
-    public static bool Paused;
+	/// <summary>
+	/// Track whether the application is paused or not
+	/// </summary>
+	public static bool Paused;
 
 	private void Start()
 	{

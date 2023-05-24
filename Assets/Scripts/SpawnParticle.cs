@@ -32,7 +32,14 @@ public class SpawnParticle : MonoBehaviour
 	private void CollisionTimer()
 	{
 		_timeToCollision -= Time.deltaTime;
-		_collisionText.text = "Collision in: " + _timeToCollision.ToString("#.###");
+		if (_timeToCollision > 10.0)
+		{
+			_collisionText.text = "Cleaning up after previous collision...";
+		}
+		else
+		{
+			_collisionText.text = "New collision in: " + _timeToCollision.ToString("#.###");
+		}
 		if (_timeToCollision < 0)
 		{
 			_collisionText.text = "Colliding!"; 
