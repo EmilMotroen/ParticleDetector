@@ -22,9 +22,9 @@ public class SpawnParticle : MonoBehaviour
 	[SerializeField]
 	private float _velocity = 12.0f;
 	[SerializeField]
-	private float _timeToCollision = 25.0f;
+	private float _timeToCollision = 18.0f;
 	[SerializeField]
-	private float _collisionDuration = 3.5f;
+	private float _collisionDuration = 4.0f;
 
 	private void Update()
 	{
@@ -54,8 +54,8 @@ public class SpawnParticle : MonoBehaviour
 			_collisionDuration -= Time.deltaTime;
 			if (_collisionDuration < 0)
 			{
-				_timeToCollision = 25.0f;
-				_collisionDuration = 3.5f;
+				_timeToCollision = 18.0f;
+				_collisionDuration = 4.0f;
 			}
 		}
 	}
@@ -67,7 +67,6 @@ public class SpawnParticle : MonoBehaviour
             Random.Range(-_velocity, _velocity),
 			Random.Range(-_velocity, _velocity),
 			Random.Range(-_velocity, _velocity));
-
 		Destroy(particle, _lifetime);  // Destroy particles after a certain time to prevent too many existing
 	}
 }
