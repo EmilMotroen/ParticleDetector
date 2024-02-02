@@ -8,27 +8,27 @@ using UnityEngine.UI;
 public class SpawnParticle : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject _particle;
+	private GameObject particle;
 	[SerializeField]
-	private Text _collisionText;
+	private Text collisionText;
 	[SerializeField]
-	private Text _collisionEnergyText;
+	private Text collisionEnergyText;
 	[SerializeField]
-	private Text _dateText;
+	private Text dateText;
 
 
 	[SerializeField]
-	private float _lifetime = 10.0f;
+	private float lifetime = 10.0f;
 	[SerializeField]
-	private float _velocity = 12.0f;
+	private float velocity = 12.0f;
 	[SerializeField]
-	private float _timeToCollision = 18.0f;
+	private float timeToCollision = 18.0f;
 	[SerializeField]
-	private float _collisionDuration = 4.0f;
+	private float collisionDuration = 4.0f;
 
 	private void Update()
 	{
-		_dateText.text = System.DateTime.Now.ToString();
+		dateText.text = System.DateTime.Now.ToString();
 		CollisionTimer();
 	}
 
@@ -37,36 +37,36 @@ public class SpawnParticle : MonoBehaviour
 	/// </summary>
 	private void CollisionTimer()
 	{
-		_timeToCollision -= Time.deltaTime;
-		if (_timeToCollision > 12.0)
+		timeToCollision -= Time.deltaTime;
+		if (timeToCollision > 12.0)
 		{
-			_collisionText.text = "Cleaning up after previous collision...";
+			collisionText.text = "Cleaning up after previous collision...";
 		}
 		else
 		{
-			_collisionText.text = "New collision in: " + _timeToCollision.ToString("0.000");
+			collisionText.text = "New collision in: " + timeToCollision.ToString("0.000");
 		}
-		if (_timeToCollision < 0)
+		if (timeToCollision < 0)
 		{
-			_collisionText.text = "Colliding!";
-			_collisionEnergyText.text = "Collision Energy: " + Random.Range(3.0f, 7.0f).ToString("0.00") + " TeV";
+			collisionText.text = "Colliding!";
+			collisionEnergyText.text = "Collision Energy: " + Random.Range(3.0f, 7.0f).ToString("0.00") + " TeV";
 			Spawn();
-			_collisionDuration -= Time.deltaTime;
-			if (_collisionDuration < 0)
+			collisionDuration -= Time.deltaTime;
+			if (collisionDuration < 0)
 			{
-				_timeToCollision = 18.0f;
-				_collisionDuration = 4.0f;
+				timeToCollision = 18.0f;
+				collisionDuration = 4.0f;
 			}
 		}
 	}
 
 	public void Spawn()
     {
-		var particle = Instantiate(_particle, transform.position, Quaternion.identity);
+		var particle = Instantiate(this.particle, transform.position, Quaternion.identity);
 		particle.GetComponent<Rigidbody>().velocity = new Vector3(
-            Random.Range(-_velocity, _velocity),
-			Random.Range(-_velocity, _velocity),
-			Random.Range(-_velocity, _velocity));
-		Destroy(particle, _lifetime);  // Destroy particles after a certain time to prevent too many existing
+            Random.Range(-velocity, velocity),
+			Random.Range(-velocity, velocity),
+			Random.Range(-velocity, velocity));
+		Destroy(particle, lifetime);  // Destroy particles after a certain time to prevent too many existing
 	}
 }

@@ -9,18 +9,18 @@ using UnityEngine;
 /// </summary>
 public class CameraController : MonoBehaviour
 {
-    private Vector3 _initialPos = Vector3.zero;
-    private Quaternion _initialRot = Quaternion.identity;
+    private Vector3 initialPos = Vector3.zero;
+    private Quaternion initialRot = Quaternion.identity;
 
     [SerializeField]
-    private float _speed = 5.0f;  // Speed of the camera
+    private float speed = 5.0f;
     [SerializeField]
-    private float _sensitivity = 3.5f;  // Sensitivity of the camera
+    private float sensitivity = 3.5f;
 
     private void Start()
     {
-        _initialPos = transform.position;
-        _initialRot = transform.rotation;
+        initialPos = transform.position;
+        initialRot = transform.rotation;
     }
 
     private void Update()
@@ -28,18 +28,18 @@ public class CameraController : MonoBehaviour
         if (!PauseMenu.Paused)
         {
 			// Move camera forward, backward, left and right
-			transform.position += _speed * Input.GetAxis("Vertical") * Time.deltaTime * transform.forward;
-			transform.position += _speed * Input.GetAxis("Horizontal") * Time.deltaTime * transform.right;
+			transform.position += speed * Input.GetAxis("Vertical") * Time.deltaTime * transform.forward;
+			transform.position += speed * Input.GetAxis("Horizontal") * Time.deltaTime * transform.right;
 
 			// Rotate camera
 			float mouseX = Input.GetAxis("Mouse X");
 			float mouseY = Input.GetAxis("Mouse Y");
-			transform.eulerAngles += new Vector3(-mouseY * _sensitivity, mouseX * _sensitivity, 0);
+			transform.eulerAngles += new Vector3(-mouseY * sensitivity, mouseX * sensitivity, 0);
 
 			// Reset camera position and rotation with the 'R' key
 			if (Input.GetKeyDown(KeyCode.R))
 			{
-				transform.SetPositionAndRotation(_initialPos, _initialRot);
+				transform.SetPositionAndRotation(initialPos, initialRot);
 			}
 		}
 	}
