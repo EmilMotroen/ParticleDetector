@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] 
-    private GameObject _pauseMenu;
+    private GameObject pauseMenu;
 
 	/// <summary>
 	/// Track whether the application is paused or not
@@ -32,7 +32,7 @@ public class PauseMenu : MonoBehaviour
     {
         Paused = true;
         Time.timeScale = 0f;
-		_pauseMenu.SetActive(true);
+		pauseMenu.SetActive(true);
         Cursor.visible = true;
 	}
 
@@ -43,7 +43,7 @@ public class PauseMenu : MonoBehaviour
     {
         Paused = false;
         Time.timeScale = 1.0f;
-        _pauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         Cursor.visible = false;
     }
 

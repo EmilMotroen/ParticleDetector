@@ -63,7 +63,7 @@ public class SpawnParticle : MonoBehaviour
 	public void Spawn()
     {
 		var particle = Instantiate(this.particle, transform.position, Quaternion.identity);
-		particle.GetComponent<Rigidbody>().velocity = new Vector3(
+		particle.GetComponent<Rigidbody>().linearVelocity = new Vector3(
             Random.Range(-velocity, velocity),
 			Random.Range(-velocity, velocity),
 			Random.Range(-velocity, velocity));
